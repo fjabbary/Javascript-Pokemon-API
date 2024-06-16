@@ -1,0 +1,7 @@
+.navbar-toggler-icon {
+  background-image: url(../images/hamburger.png)
+}
+
+.navbar {
+  border-bottom: 5px solid red;
+}
