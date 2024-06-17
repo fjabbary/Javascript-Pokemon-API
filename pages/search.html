@@ -37,24 +37,26 @@
 
 
   <main id="search">
-    <div class="container w-50 bg-dark text-light p-4">
-      <form>
+    <div class="container">
+      <form class="mx-auto w-50 bg-dark text-light p-4" onsubmit="handleSubmit(event)">
         <div class="mb-3">
-          <label for="name" class="form-label">Email address</label>
-          <input type="text" class="form-control" id="name" placeholder="Enter pokemon's name or ID">
+          <label for="name" class="form-label">Search Pokemon</label>
+          <input type="text" class="form-control" name="name" id="name" placeholder="Enter pokemon's name or ID">
         </div>
 
         <div class="text-end">
-          <button type="submit" class="btn btn-warning">Search</button>
+          <button type="submit" class="btn btn-success">Search</button>
         </div>
       </form>
+
+      <div id="pokemons-container"></div>
     </div>
   </main>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
-  <!-- <script src="../static/js/script.js"></script> -->
+  <script src="../static/js/search.js"></script>
 </body>
 
 </html>

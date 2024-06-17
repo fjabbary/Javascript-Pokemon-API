@@ -36,4 +36,5 @@ main#search {
 main#search .container {
   position: relative;
   top: 40px;
+  opacity: 0.9;
 }
