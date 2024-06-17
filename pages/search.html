@@ -36,7 +36,7 @@
   </nav>
 
 
-  <main id="search">
+  <main id="search" class="mb-5">
     <div class="container">
       <form class="mx-auto w-50 bg-dark text-light p-4" onsubmit="handleSubmit(event)">
         <div class="mb-3">
@@ -50,6 +50,21 @@
       </form>
 
       <div id="pokemons-container"></div>
+
+      <div id="team" class="mt-5">
+        <p class="d-inline-flex gap-1">
+          <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#members"
+            aria-expanded="false" aria-controls="members">
+            Toggle Team
+          </button>
+        </p>
+        <div class="collapse" id="members">
+          <div class="card card-body">
+            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the
+            user activates the relevant trigger.
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 

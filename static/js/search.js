@@ -6,10 +6,12 @@ async function handleSubmit(e) {
   const pokemonName = e.target.name.value
   const url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
 
+
   try {
     const response = await fetch(url)
     const data = await response.json()
     displayPokemonDetails(data)
+    e.target.reset();
   } catch (error) {
     alert(`Pokemone with the name of ${pokemonName} is not available`)
   }
@@ -19,11 +21,12 @@ async function handleSubmit(e) {
 function displayPokemonDetails(data) {
   const { id, name, sprites } = data;
 
-  const pokemonUI = `<div class="card" style="width: 18rem;">
-          <img src=${sprites.other.dream_world.front_default} class="card-img-top" alt=${name}>
-          <div class="card-body">
+  const pokemonUI = `<div class="card">
+          <img src=${sprites.other.dream_world.front_default} class="card-img-top mx-auto py-3" alt=${name}>
+          <div class="card-body text-center">
             <h5 class="card-title">${name}</h5>
-            <a href="/pages/details.html?id=${id}" class="btn btn-warning">View Details</a>
+            <a href="/pages/details.html?id=${id}" class="btn btn-sm btn-warning">View Details</a>
+            <button class="btn btn-success my-2 btn-sm">Add to Team</button>
           </div>
         </div>`;
 
@@ -32,3 +35,5 @@ function displayPokemonDetails(data) {
   const pokemonContainer = document.getElementById('pokemons-container');
   pokemonContainer.appendChild(div);
 }
+
+const pokemonTeam = []

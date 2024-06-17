@@ -29,7 +29,7 @@ main#search {
     ),
     url(../images/poke-bg2.jpg);
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 800px;
   background-size: cover;
 }
 
@@ -37,4 +37,29 @@ main#search .container {
   position: relative;
   top: 40px;
   opacity: 0.9;
+}
+
+main#search #pokemons-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+main#search #pokemons-container .card {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+main#search #pokemons-container .card:hover {
+  transform: scale(1.05);
+}
+
+main#search #pokemons-container .card img {
+  width: 120px;
+  height: 120px;
+}
+
+main#search #pokemons-container .card-body {
+  background: #eee;
 }

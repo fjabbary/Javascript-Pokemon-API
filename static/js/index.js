@@ -5,7 +5,8 @@ function titleCase(txt) {
 }
 
 function extractId(url) {
-  const arr = url.split('')
+  'https://pokeapi.co/api/v2/pokemon/13/'
+  const arr = url.split('/')
   return arr[arr.length - 2]
 }
 
