@@ -26,7 +26,7 @@ function displayPokemonDetails(data) {
           <img src=${sprites.other.dream_world.front_default} class="card-img-top mx-auto py-3" alt=${name}>
           <div class="card-body text-center">
             <h5 class="card-title">${name}</h5>
-            <a href="/pages/details.html?id=${id}" class="btn btn-sm btn-warning">View Details</a>
+            <a href="/pages/details.html?id=${id}" class="btn btn-sm btn-primarys">View Details</a>
             <button class="btn btn-success my-2 btn-sm" id="addBtn" onclick="addToTeam('${encodeURIComponent(JSON.stringify(data))}')">Add to Team</button>
           </div>
         </div>`;
@@ -50,7 +50,9 @@ function addToTeam(data) {
     renderMember(pokemonTeam);
 
   } else {
-    alert(`You already have ${name} in your team`);
+    document.getElementById('pokeName').innerText = name
+    const myModal = new bootstrap.Modal('#onload');
+    myModal.show();
   }
 
 }
@@ -65,7 +67,7 @@ function renderMember(pokemonTeam) {
               <img src=${sprites.other.dream_world.front_default} class="card-img-top mx-auto" alt=${name}>
               <div class="card-body">
                 <h5 class="card-title text-center">${name}</h5>
-                <a href="#" class="btn btn-danger btn-sm d-block" onclick="removeMember(${id})">X</a>
+                <a class="btn btn-danger btn-sm d-block" onclick="removeMember(${id})">X</a>
               </div>
             </div>`
 
@@ -75,7 +77,9 @@ function renderMember(pokemonTeam) {
     memberContainer.appendChild(div);
   })
 
-
+  if (document.querySelector('.member-container').childElementCount > 0) {
+    document.querySelector('.member-container').lastElementChild.style.animation = 'appear 1.5s ease';
+  }
 }
 
 renderMember(pokemonTeam)
@@ -84,4 +88,5 @@ function removeMember(id) {
   pokemonTeam = pokemonTeam.filter(member => member.id != id)
   renderMember(pokemonTeam)
   localStorage.setItem('members', JSON.stringify(pokemonTeam));
+  document.querySelector('.member-container').lastElementChild.style.animation = ''
 }

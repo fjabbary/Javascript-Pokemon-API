@@ -98,3 +98,19 @@ main#search #members img {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(60px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
