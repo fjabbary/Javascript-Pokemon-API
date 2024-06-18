@@ -20,13 +20,14 @@ async function handleSubmit(e) {
 
 function displayPokemonDetails(data) {
   const { id, name, sprites } = data;
+  console.log(data);
 
   const pokemonUI = `<div class="card">
           <img src=${sprites.other.dream_world.front_default} class="card-img-top mx-auto py-3" alt=${name}>
           <div class="card-body text-center">
             <h5 class="card-title">${name}</h5>
             <a href="/pages/details.html?id=${id}" class="btn btn-sm btn-warning">View Details</a>
-            <button class="btn btn-success my-2 btn-sm">Add to Team</button>
+            <button class="btn btn-success my-2 btn-sm" id="addBtn" onclick="addToTeam('${encodeURIComponent(JSON.stringify(data))}')">Add to Team</button>
           </div>
         </div>`;
 
@@ -36,4 +37,51 @@ function displayPokemonDetails(data) {
   pokemonContainer.appendChild(div);
 }
 
-const pokemonTeam = []
+
+let pokemonTeam = JSON.parse(localStorage.getItem('members')) || [];
+function addToTeam(data) {
+  const { id, name, sprites } = JSON.parse(decodeURIComponent(data));
+  const pokemonObj = { id, name, sprites }
+
+  const foundPokemon = pokemonTeam.find(item => item.id === id)
+  if (!foundPokemon) {
+    pokemonTeam.push(pokemonObj);
+    localStorage.setItem('members', JSON.stringify(pokemonTeam));
+    renderMember(pokemonTeam);
+
+  } else {
+    alert(`You already have ${name} in your team`);
+  }
+
+}
+
+function renderMember(pokemonTeam) {
+  const memberContainer = document.querySelector('.member-container')
+  memberContainer.innerHTML = '';
+
+  pokemonTeam.forEach(member => {
+    const { id, name, sprites } = member;
+    const memberUI = `<div class="card card-body">
+              <img src=${sprites.other.dream_world.front_default} class="card-img-top mx-auto" alt=${name}>
+              <div class="card-body">
+                <h5 class="card-title text-center">${name}</h5>
+                <a href="#" class="btn btn-danger btn-sm d-block" onclick="removeMember(${id})">X</a>
+              </div>
+            </div>`
+
+    const div = document.createElement('div');
+    div.innerHTML = memberUI;
+
+    memberContainer.appendChild(div);
+  })
+
+
+}
+
+renderMember(pokemonTeam)
+
+function removeMember(id) {
+  pokemonTeam = pokemonTeam.filter(member => member.id != id)
+  renderMember(pokemonTeam)
+  localStorage.setItem('members', JSON.stringify(pokemonTeam));
+}

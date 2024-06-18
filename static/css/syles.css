@@ -63,3 +63,38 @@ main#search #pokemons-container .card img {
 main#search #pokemons-container .card-body {
   background: #eee;
 }
+
+main#search #members .member-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+main#search #members img {
+  width: 100px;
+  height: 100px;
+}
+
+@media (max-width: 768px) {
+  main#search #pokemons-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  main#search #pokemons-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  main#search #members .member-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  main#search #members .member-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -38,10 +38,10 @@
 
   <main id="search" class="mb-5">
     <div class="container">
-      <form class="mx-auto w-50 bg-dark text-light p-4" onsubmit="handleSubmit(event)">
+      <form class="mx-auto w-75 bg-dark text-light p-4" onsubmit="handleSubmit(event)">
         <div class="mb-3">
           <label for="name" class="form-label">Search Pokemon</label>
-          <input type="text" class="form-control" name="name" id="name" placeholder="Enter pokemon's name or ID">
+          <input type="text" class="form-control" name="name" id="name" placeholder="Enter pokemon's name ">
         </div>
 
         <div class="text-end">
@@ -51,7 +51,7 @@
 
       <div id="pokemons-container"></div>
 
-      <div id="team" class="mt-5">
+      <div id="team" class="mt-5 w-75 mx-auto">
         <p class="d-inline-flex gap-1">
           <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#members"
             aria-expanded="false" aria-controls="members">
@@ -59,9 +59,10 @@
           </button>
         </p>
         <div class="collapse" id="members">
-          <div class="card card-body">
-            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the
-            user activates the relevant trigger.
+          <h2>Add Your Team Members Here! </h2>
+
+          <div class="member-container bg-info p-3">
+
           </div>
         </div>
       </div>
